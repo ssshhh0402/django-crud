@@ -23,12 +23,14 @@
       <th>내용</th>
       <th>작성시간</th>
     </tr>
+    
   {% for A in articles %}
   <tr>
     <td>{{A.id}}</td>
     <td>{{A.title}}</td>
     <td>{{A.content}}</td>
     <td>{{A.created_at}}</td>
+    <td style='border:none'><a href="/articles/{{A.id}}">글  보러 가기</a></td>
   </tr>
   {% endfor %}
   </table>

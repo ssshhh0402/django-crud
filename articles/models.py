@@ -5,6 +5,8 @@ from django.db import models
 # 데이터베이스 테이블을 정의하고,
 # 각각의 컬럼(필드)를 정의
 class Article(models.Model):
+    # id : integer 자동으로 정의(Primary key)
+    # id = models.AutoField(primary_key=True) -> Integer 값이 자동으로 하나씩 증가(AUTOINCREMENT)
     #CharField는 필수인자로 max_length 지정
     title = models.CharField(max_length=10)
     content = models.TextField()

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <label for='title'>제목:</label><br>
+  <p id = 'title'>
+    {{article.title}}
+  </p><br>
+  <label for='c_time'>작성시간</label>
+  <p id='c_time'>
+    {{article.created_at}}
+  </p><br>
+  <label for='u_time'>수정일자</label>
+  <p id='u_time'>
+    {{article.updated_at}}
+  </p><hr>
+  <label for='content'>내용</label><br>
+  <textarea id='content'>
+    {{article.content}}
+  </textarea><br>
+
+  <a href='/articles/'><button>돌아가기</button></a>
+</body>
+</html>
