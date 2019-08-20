@@ -5,4 +5,7 @@ urlpatterns = [
     path('new/', views.new),
     path('create/', views.create),
     path('<int:article_pk>/', views.detail),
+    path('delete/<int:article_pk>', views.delete),
+    path('soojung/<int:article_pk>/<str:article_title>/<str:article_content', views.soojung),
+    path('update/<int:article_pk>', views.update),
 ]

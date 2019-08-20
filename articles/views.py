@@ -18,8 +18,8 @@ def create(request):
     context = {
         'data' : article
     }
-    #return render(request, 'articles/create.html', context)
-    return render(request, f'/articles/{article.id}/', context)
+    return render(request, 'articles/create.html', context)
+    #return render(request, f'/articles/{article.id}/', context)
     #return redirect('/articles/')
 
 
@@ -29,3 +29,23 @@ def detail(request, article_pk):
       'article' : article
     }
     return render(request, 'articles/detail.html', context)
+
+def delete(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    article.delete()
+    return redirect('/articles')
+
+def soojung(request, article_pk, article_title, article_content):
+    context = {
+        'article_id' : article_pk,
+        'article_title' : article_title,
+        'article_c' : article_content
+    }
+    return render(request, '/update', context)
+
+def update(request, article_pk):
+    in_data = request.GET
+    article = Article.objects.get(pk=article_pk)
+    article.content = in_data.get('content')
+    article.save()
+    return redirect('/articles')
