@@ -35,17 +35,17 @@ def delete(request, article_pk):
     article.delete()
     return redirect('/articles')
 
-def soojung(request, article_pk, article_title, article_content):
+def soojung(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
     context = {
-        'article_id' : article_pk,
-        'article_title' : article_title,
-        'article_c' : article_content
+        'article' : article
     }
-    return render(request, '/update', context)
+    return render(request, 'articles/update.html', context)
 
 def update(request, article_pk):
     in_data = request.GET
     article = Article.objects.get(pk=article_pk)
     article.content = in_data.get('content')
     article.save()
-    return redirect('/articles')
+    #return redirect('/articles')
+    return redirect(f'/articles/{article.id}')
