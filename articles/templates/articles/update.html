@@ -7,17 +7,17 @@
   <title>Document</title>
 </head>
 <body>
-    <form action='/articles/update/{{article.id}}'>
+    <form action='{% url 'articles:update' article.pk %}'>
       <div>
       <label for="t_input">제목</label>
       <p id="title">{{article.title}}</div>>
       <div>
       <label for="c_input">내용</label>
-      <textarea id="c_input", name="content">
+      <textarea id="c_input" name="content">
         {{article.content}}
       </textarea>
     </div>
-      <input type="submit", value="수정하기">
+      <input type="submit" value="수정하기">
     </form>
 </body>
 </html>
