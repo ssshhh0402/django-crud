@@ -12,7 +12,7 @@ def new(request):
     return render(request, 'articles/new.html')
 
 def create(request):
-    in_data = request.GET
+    in_data = request.POST
     article = Article.objects.create(title=in_data.get('title'), content=in_data.get('content'))
     # a = Article.objects.order_by('id')
     context = {
@@ -43,7 +43,7 @@ def soojung(request, article_pk):
     return render(request, 'articles/update.html', context)
 
 def update(request, article_pk):
-    in_data = request.GET
+    in_data = request.POST
     article = Article.objects.get(pk=article_pk)
     article.content = in_data.get('content')
     article.save()
