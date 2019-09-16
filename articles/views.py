@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Article 
+from .models import Article,Comment 
 from django.views.decorators.http import require_POST
 # Create your views here.
 def index(request):
@@ -34,8 +34,11 @@ def delete(request, article_pk):
 
 def detail(request, article_pk):
     article = Article.objects.get(pk=article_pk)
+    comment = article.comment_set.all()
+    # comment = Comment.objects.get(article_id=article_pk).all()
     context = {
-        'article' : article
+        'article' : article,
+        'comment' : comment
     }
     return render(request, 'articles/detail.html', context)
 
@@ -52,3 +55,9 @@ def update(request, article_pk):
             'article' : article
         }
         return render(request, 'articles/update.html', context)
+def comment_create(request, article_pk):
+    comment = Comment()
+    comment.content = request.POST.get('comment')
+    comment.article_id= article_pk
+    comment.save()
+    return redirect('articles:detail', article_pk)
