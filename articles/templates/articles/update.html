@@ -7,6 +7,7 @@
   <title>Document</title>
 </head>
 <body>
+
     <form action='{% url 'articles:update' article.pk %}' method='post'>
       {% csrf_token %}
       <div>

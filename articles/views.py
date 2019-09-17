@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Article,Comment 
 from django.views.decorators.http import require_POST
+from django.contrib import messages
 # Create your views here.
 def index(request):
     articles = Article.objects.all()
@@ -60,4 +61,14 @@ def comment_create(request, article_pk):
     comment.content = request.POST.get('comment')
     comment.article_id= article_pk
     comment.save()
+    messages.add_message(request, messages.INFO, '등록되었습니다')
+    return redirect('articles:detail', article_pk)
+
+
+def c_delete(request, comment_pk):
+    comment = Comment.objects.get(id=comment_pk)
+    
+    article_pk = comment.article_id
+    comment.delete()
+    messages.add_message(request, messages.INFO, '삭제되었습니다')
     return redirect('articles:detail', article_pk)
