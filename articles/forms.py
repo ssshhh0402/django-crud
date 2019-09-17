@@ -1,23 +1,23 @@
 from django import forms
-
-class ArticleForm(forms.Form):
-    title = forms.CharField(max_length=140, label='제목',
-    widget = forms.TextInput(
-        attrs={
-            'placeholder' : '제목을 입력바랍니다.'
-        }
-    )
-    )
-    content = forms.CharField(
-        #label 내용 수정
-        label='내용',
-        #Django form에서 html 속성 지정 -> widget
-        widget=forms.Textarea(
-            attrs={
-                'class': 'my-content',
-                'placeholder': '내용을 입력바랍니다.',
-                'rows': 5,
-                'cols': 60
-            }
-        )
-    )
+from .models import Article
+class ArticleForm(forms.ModelForm):
+    # title = forms.CharField(
+    #     max_length=1,
+    #     label='제목',
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             'placeholder': '제목을 입력바랍니다.'
+    #         }
+    #     )
+    # )    
+    class Meta :
+        model = Article
+        fields = '__all__'
+        # widgets = {
+        #     'title': forms.TextInput(
+        #         attrs={
+        #             'placeholder': '제목을 입력바랍니다'
+        #         }
+        #     )
+        # }
+        #위젯 설정은 위에 있는 두가지 방법 모두 아무거로나 가능

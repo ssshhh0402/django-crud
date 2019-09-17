@@ -3,6 +3,14 @@
   {% extends 'articles/base.html' %}
   {% block body %}
   {% if request.resolver_match.url_name == 'create' %}
-  
+  <h1 class="text-center"> 글 수정하기 </h1>
+  {% else %}
+  <h1 class='text-center'> 글 수정하기</h1>
+  {% endif%}
+  <form acction='' method="post">
+    {% csrf_token %}
+    {{ article_form.as_p}}
+    <button type="submit" clas="btn btn-primary"> Submit</button>
+  </form>
 
 </html>

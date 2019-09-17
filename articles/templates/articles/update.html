@@ -8,20 +8,8 @@
 </head>
 <body>
 
-    <!-- <form action='{% url 'articles:update' article.pk %}' method='post'>
-      {% csrf_token %}
-      <div>
-      <label for="t_input">제목</label>
-      <p id="title">{{article.title}}</div>>
-      <div>
-      <label for="c_input">내용</label>
-      <textarea id="c_input" name="content">
-        {{article.content}}
-      </textarea>
-    </div>
-      <input type="submit" value="수정하기">
-    </form> -->
-    <form action='{% url 'articles:update' article.pk %}' method='POST'>
+   
+    <form action='' method='POST'>
       {% csrf_token %}
       {{article_form.as_p}}
       <button type="submit" class="btn btn-success">글 쓰기</button>
