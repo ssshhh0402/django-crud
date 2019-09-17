@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action='{% url 'articles:update' article.pk %}' method='post'>
+    <!-- <form action='{% url 'articles:update' article.pk %}' method='post'>
       {% csrf_token %}
       <div>
       <label for="t_input">제목</label>
@@ -20,6 +20,11 @@
       </textarea>
     </div>
       <input type="submit" value="수정하기">
+    </form> -->
+    <form action='{% url 'articles:update' article.pk %}' method='POST'>
+      {% csrf_token %}
+      {{article_form.as_p}}
+      <button type="submit" class="btn btn-success">글 쓰기</button>
     </form>
 </body>
 </html>
