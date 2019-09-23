@@ -120,4 +120,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'                             # static file들을 모두 모아서 해당 URL로 표현한다.
+# static file 물리 위치 지정
+# 기본적으로 app에 있는  static 폴더들을 모두 관리하며 아래에 임의의 폴더들을 추가할 수 있다.
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'crud', 'assets')
+]
