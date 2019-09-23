@@ -126,3 +126,6 @@ STATIC_URL = '/static/'                             # static file들을 모두 �
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'crud', 'assets')
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

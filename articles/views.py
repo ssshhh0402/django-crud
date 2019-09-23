@@ -16,8 +16,7 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-        article_form = ArticleForm(request.POST)
-      
+        article_form = ArticleForm(request.POST,request.FILES)
         if article_form.is_valid():
             article = article_form.save()
             return redirect('articles:detail', article.pk)
@@ -26,7 +25,7 @@ def create(request):
     context = {
         'article_form': article_form
     }
-    return render(request, 'articles/new.html', context)
+    return render(request, 'articles/form.html', context)
 
 
 def update(request, article_pk):
